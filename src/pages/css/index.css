@@ -1,0 +1,44 @@
+.login {
+  width: 100%;
+  height: 100%;
+  background: url(../login/images/bg.jpg);
+}
+.login .login-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.login .login-header > img {
+  width: 50px;
+  margin: 0 40px 0 55px;
+}
+.login .login-header > h2 {
+  font-size: 35px;
+  color: white;
+}
+.login .denglu {
+  width: 400px;
+  height: 380px;
+  background-color: white;
+  margin: 60px auto;
+  padding: 25px 50px 0;
+}
+.login .denglu > h2 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+.login .denglu .login-form .login-form-button {
+  width: 100%;
+}
+.login .denglu .login-form button {
+  font-size: 20px;
+  line-height: 32px;
+  height: 40px;
+  letter-spacing: 10px;
+}
+.login .denglu .login-form .ant-input-affix-wrapper {
+  height: 50px;
+}

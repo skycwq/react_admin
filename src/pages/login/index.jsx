@@ -6,10 +6,28 @@ import './index.less'
 import logo from './images/logo.png'
 // 登录路由组件
 export default class Login extends Component {
-     
-        onFinish = (values) => {
+     NormalLoginForm = () => {
+        return (values) => {
           console.log('Received values of form: ', values);
-        }
+        }}
+    //密码验证
+    validator=async(rule, value) => {
+        
+            try{
+                if(!value){
+                    throw new Error('密码不能为空')
+                }else if(value.length<4){
+                    throw new Error('密码最少4位')
+                }else if(value.length>12){
+                    throw new Error('密码最长12位')
+                }else{
+                   
+                }
+            }catch(err){
+                throw new Error(err)
+            }
+        
+    }
     render(){
 
         return (
@@ -24,17 +42,26 @@ export default class Login extends Component {
                         name="normal_login"
                         className="login-form"
                         initialValues={{ remember: true }}
-                        onFinish={this.onFinish}
+                        onFinish={this.NormalLoginForm()}
                     >
                         <Form.Item
                             name="username"
-                            rules={[{ required: true, message: '请输入用户名' }]}
+                            rules={[
+                                { required: true, message: '请输入用户名' },
+                                {min:4,message:'用户名最少4位'},
+                                {max:12,message:'用户名最多12位'},
+                                {pattern:/^[a-zA-Z0-9_]+$/,message:'用户名必须是字母数字下划线'}
+                        ]}
                         >
                             <Input prefix={<UserOutlined className="site-form-item-icon" style={{color:'rgba(0,0,0,.25)'}}/>} placeholder="用户名" />
                         </Form.Item>
                         <Form.Item
                             name="password"
-                            rules={[{ required: true, message: '请输入密码' }]}
+                            rules={[{validator:this.validator}] }
+                               
+                                
+                                
+                              
                         >
                             <Input
                                 prefix={<LockOutlined className="site-form-item-icon" style={{color:'rgba(0,0,0,.25)'}}/>}
